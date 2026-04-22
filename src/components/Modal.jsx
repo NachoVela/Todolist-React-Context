@@ -4,7 +4,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { addContact } from "../services/serviceAPI.js";
 
 
-export const Form = (props) => {
+export const Modal = (props) => {
     const params = useParams()
     const {store, editContact, postContact} =useGlobalReducer()
     const navigate = useNavigate()
