@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import { addContact } from "../services/serviceAPI.js";
+import { addContact, editContact } from "../services/serviceAPI.js";
 
 
 export const Form = (props) => {
     const params = useParams()
-    const {store, editContact, postContact} =useGlobalReducer()
+    const {store} =useGlobalReducer()
     const navigate = useNavigate()
     
 
@@ -14,7 +14,8 @@ export const Form = (props) => {
         name: "",
         phone: "",
         email: "",
-        address: ""
+        address: "",
+        id: ""
     })
 
     const handleSubmit = (e) => {
@@ -29,7 +30,7 @@ export const Form = (props) => {
             })
             
         } else {
-            editContact(params.id, inputValue)
+            editContact(inputValue, navigate)
             setInputValue({
                 name: "",
                 phone: "",
@@ -45,7 +46,8 @@ export const Form = (props) => {
                 name: `${contact.name}`,
                 phone: `${contact.phone}`,
                 email: `${contact.email}`,
-                address: `${contact.address}`
+                address: `${contact.address}`,
+                id: `${contact.id}`
             })
         }
     }, [])

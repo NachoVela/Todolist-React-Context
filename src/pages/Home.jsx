@@ -13,13 +13,13 @@ export const Home = () => {
   }, [])
 
 	return (
-		<div className="text-center mt-5">
+		<div className="text-center mt-5 container">
 			<h1>Contact List</h1>
 			{
 				store.contacts.map(contact =>{
 
 					return (
-						<Card contact={contact}/>
+						<Card contact={contact} key={contact.id}/>
 					)
 				})
 			}

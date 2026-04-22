@@ -29,3 +29,28 @@ export const addContact = async (contact, navigate) => {
         navigate("/")
     }
 }
+
+export const editContact = async (contact, navigate) => {
+    const response = await fetch(`https://playground.4geeks.com/contact/agendas/ironman/contacts/${contact.id}`, {
+        method: "PUT",
+        body: JSON.stringify(contact),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if(response.ok){
+        navigate("/")
+    }
+}
+
+export const deleteContact = async (id, dispatch) => {
+    const response = await fetch(`https://playground.4geeks.com/contact/agendas/ironman/contacts/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if(response.ok){
+        getContacts(dispatch)
+    }
+}
